@@ -17,7 +17,7 @@ const colors = ["c1", "c2", "c3", "c4", "c5"];
 
 async function loadRooms() {
   try {
-    const res = await fetch("http://localhost:3000/api/room/my", {
+    const res = await fetch("https://studyhub-yvhy.onrender.com/api/room/my", {
       method: "GET",
       headers: {
         "Content-Type": "application/json",
@@ -90,7 +90,7 @@ async function createRoomPrompt() {
   if (!name) return;
 
   try {
-    const res = await fetch("http://localhost:3000/api/room/create", {
+    const res = await fetch("https://studyhub-yvhy.onrender.com/api/room/create", {
       method: "POST",
       headers: {
         "Content-Type": "application/json",
@@ -119,7 +119,7 @@ async function joinRoomPrompt() {
   if (!code) return;
 
   try {
-    const res = await fetch("http://localhost:3000/api/room/join", {
+    const res = await fetch("https://studyhub-yvhy.onrender.com/api/room/join", {
       method: "POST",
       headers: {
         "Content-Type": "application/json",

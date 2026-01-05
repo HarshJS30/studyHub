@@ -1,4 +1,4 @@
-const API = "http://localhost:3000/api/auth";
+const API = "https://studyhub-yvhy.onrender.com/api/auth";
 
 /* ================= SEND OTP (SIGN UP) ================= */
 
