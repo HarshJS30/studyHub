@@ -1,0 +1,71 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <title>Join Room | StudyHub</title>
+  <link rel="stylesheet" href="css/style.css">
+</head>
+<body>
+
+<div class="card" style="max-width:500px">
+
+  <div class="logo">
+    <div class="logo-icon">S</div>
+    <div class="logo-text">StudyHub</div>
+  </div>
+
+  <h2>Join a Room</h2>
+  <p class="subtitle">Enter the room code shared with you</p>
+
+  <input
+    id="roomCode"
+    class="input"
+    placeholder="Room code (e.g. AB12CD)"
+  >
+
+  <p id="error" style="color:#ffcccc;margin-bottom:10px"></p>
+
+  <button class="btn btn-secondary" style="width:100%" onclick="joinRoom()">
+    Join Room
+  </button>
+
+  <p style="margin-top:20px">
+    <a href="dashboard.html">← Back to Dashboard</a>
+  </p>
+
+</div>
+
+<script>
+  async function joinRoom() {
+    const code = document.getElementById("roomCode").value.trim();
+    const error = document.getElementById("error");
+    error.textContent = "";
+
+    if (!code) {
+      error.textContent = "Room code is required";
+      return;
+    }
+
+    const token = localStorage.getItem("token");
+
+    try {
+      const res = await fetch("/api/room/join", {
+        method: "POST",
+        headers: {
+          "Content-Type": "application/json",
+          Authorization: `Bearer ${token}`
+        },
+        body: JSON.stringify({ code })
+      });
+
+      if (!res.ok) throw new Error("Invalid room code");
+
+      window.location.href = "dashboard.html";
+    } catch (err) {
+      error.textContent = "Failed to join room";
+    }
+  }
+</script>
+
+</body>
+</html>

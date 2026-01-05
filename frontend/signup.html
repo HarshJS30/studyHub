@@ -1,0 +1,57 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <title>Sign Up | StudyHub</title>
+  <link rel="stylesheet" href="css/style.css">
+</head>
+<body>
+
+<div class="card" style="max-width:420px">
+
+  <div class="logo">
+    <div class="logo-icon">S</div>
+    <div class="logo-text">StudyHub</div>
+  </div>
+
+  <p class="subtitle">Create your account</p>
+
+  <!-- REQUIRED IDs for auth.js -->
+  <input
+    id="email"
+    class="input"
+    type="email"
+    placeholder="Email"
+  >
+
+  <input
+    id="password"
+    class="input"
+    type="password"
+    placeholder="Password"
+  >
+
+
+  <!-- ERROR MESSAGE -->
+  <p id="error" style="color:#ffcccc;margin-bottom:10px"></p>
+
+  <!-- WIRED BUTTON -->
+  <button
+    class="btn btn-secondary"
+    style="width:100%"
+    onclick="sendOtp()"
+  >
+    Send OTP
+  </button>
+
+  <p style="margin-top:20px">
+    Already have an account?
+    <a href="login.html">Login</a>
+  </p>
+
+</div>
+
+<!-- IMPORTANT: LOAD auth.js -->
+<script src="js/auth.js"></script>
+
+</body>
+</html>

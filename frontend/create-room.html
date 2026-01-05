@@ -1,0 +1,71 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <title>Create Room | StudyHub</title>
+  <link rel="stylesheet" href="css/style.css">
+</head>
+<body>
+
+<div class="card" style="max-width:500px">
+
+  <div class="logo">
+    <div class="logo-icon">S</div>
+    <div class="logo-text">StudyHub</div>
+  </div>
+
+  <h2>Create a Room</h2>
+  <p class="subtitle">Give your study room a name</p>
+
+  <input
+    id="roomName"
+    class="input"
+    placeholder="Room name (e.g. DSA Study Group)"
+  >
+
+  <p id="error" style="color:#ffcccc;margin-bottom:10px"></p>
+
+  <button class="btn btn-primary" style="width:100%" onclick="createRoom()">
+    Create Room
+  </button>
+
+  <p style="margin-top:20px">
+    <a href="dashboard.html">← Back to Dashboard</a>
+  </p>
+
+</div>
+
+<script>
+  async function createRoom() {
+    const name = document.getElementById("roomName").value.trim();
+    const error = document.getElementById("error");
+    error.textContent = "";
+
+    if (!name) {
+      error.textContent = "Room name is required";
+      return;
+    }
+
+    const token = localStorage.getItem("token");
+
+    try {
+      const res = await fetch("/api/room/create", {
+        method: "POST",
+        headers: {
+          "Content-Type": "application/json",
+          Authorization: `Bearer ${token}`
+        },
+        body: JSON.stringify({ name })
+      });
+
+      if (!res.ok) throw new Error("Failed to create room");
+
+      window.location.href = "dashboard.html";
+    } catch (err) {
+      error.textContent = "Room creation failed";
+    }
+  }
+</script>
+
+</body>
+</html>

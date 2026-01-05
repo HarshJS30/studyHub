@@ -1,0 +1,44 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <title>Verify OTP | StudyHub</title>
+  <link rel="stylesheet" href="css/style.css">
+</head>
+<body>
+
+<div class="card" style="max-width:420px">
+
+  <div class="logo">
+    <div class="logo-text">Verify OTP</div>
+  </div>
+
+  <p class="subtitle">
+    Enter the OTP sent to your email
+  </p>
+
+  <!-- REQUIRED ID -->
+  <input
+    id="otp"
+    class="input"
+    placeholder="Enter OTP"
+  >
+
+  <!-- ERROR MESSAGE -->
+  <p id="error" style="color:#ffcccc;margin-bottom:10px"></p>
+
+  <!-- WIRED BUTTON -->
+  <button
+    class="btn btn-primary"
+    style="width:100%"
+    onclick="verifyOtp()"
+  >
+    Verify OTP
+  </button>
+
+</div>
+
+<!-- IMPORTANT -->
+<script src="js/auth.js"></script>
+
+</body>
+</html>

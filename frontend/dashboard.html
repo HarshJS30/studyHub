@@ -1,0 +1,64 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <title>Dashboard | StudyHub</title>
+  <link rel="stylesheet" href="css/style.css">
+</head>
+<body>
+
+<!-- ================= DASHBOARD WRAPPER ================= -->
+<div class="dashboard">
+
+  <!-- LEFT SIDEBAR -->
+  <div class="sidebar">
+    <div class="sidebar-top">
+      <h2>StudyHub</h2>
+    </div>
+
+    <div class="sidebar-bottom">
+      <button class="logout-btn" onclick="logout()">Logout</button>
+    </div>
+  </div>
+
+  <!-- MAIN CONTENT -->
+  <div class="dashboard-main">
+
+    <!-- TOP BAR -->
+    <div class="top-bar">
+      <div>
+        <h1>Your Rooms</h1>
+        <p class="subtitle">Create or join your study rooms</p>
+      </div>
+
+      <div class="top-actions">
+        <button class="btn btn-primary" onclick="location.href='create-room.html'">
+          + Create Room
+        </button>
+
+        <button class="btn btn-secondary" onclick="location.href='join-room.html'">
+          Join Room
+        </button>
+
+      </div>
+    </div>
+
+    <!-- ROOMS GRID -->
+    <div class="rooms big-rooms" id="rooms">
+      <!-- Injected by dashboard.js -->
+    </div>
+
+  </div>
+</div>
+
+<script>
+  function logout() {
+    localStorage.removeItem("token");
+    localStorage.removeItem("userEmail");
+    window.location.href = "login.html";
+  }
+</script>
+
+<script src="js/dashboard.js"></script>
+</body>
+</html>
